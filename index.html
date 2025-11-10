@@ -47,10 +47,13 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
@@ -349,6 +352,106 @@
 
         #team {
             background-color: var(--white);
+        }
+
+        #team h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-photo {
+            transform: scale(1.1);
+        }
+
+        .team-card:nth-child(1) .team-photo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .team-card:nth-child(2) .team-photo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .team-card:nth-child(3) .team-photo {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .team-card:nth-child(4) .team-photo {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .team-card:nth-child(5) .team-photo {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .team-card:nth-child(6) .team-photo {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-experience {
+            font-size: 0.95rem;
+            color: #64748b;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-experience {
+            opacity: 1;
+            max-height: 100px;
+            margin-top: 1rem;
         }
 
         /* Contact Section */
@@ -755,30 +858,80 @@
     <main>
         <!-- Hero Section -->
         <section id="hero">
-            <div class="section-content">
-                <h1>Welcome to Medify</h1>
-                <p>Revolutionizing clinical trial management with innovative technology solutions for healthcare research.</p>
-                <p>We're transforming the way medical research is conducted, making clinical trials more efficient, accessible, and patient-centered.</p>
+            <div class="section-content hero-content">
+                <h1 class="hero-brand">MEDIFY</h1>
+                <p class="hero-tagline">The Missing Link in Clinical Trials</p>
+                <p class="hero-subtitle">Transforming clinical trials through patient engagement and AI-powered insights</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Book a Demo</a>
+                    <a href="#solution" class="btn btn-secondary">Learn More</a>
+                </div>
             </div>
         </section>
 
         <!-- Problem Section -->
         <section id="problem">
             <div class="section-content">
-                <h2>The Problem</h2>
-                <p>Clinical trial management faces significant challenges in today's healthcare landscape. Traditional processes are often fragmented, inefficient, and difficult to navigate for both researchers and participants.</p>
-                <p>These inefficiencies lead to delayed research outcomes, increased costs, and limited patient access to potentially life-saving treatments.</p>
-                <p>The current system struggles with patient recruitment, data management, regulatory compliance, and communication between stakeholders.</p>
+                <h2>Today Clinical Trials Are...</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-title">SLOW</div>
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label">Average trial duration (years)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-title">EXPENSIVE</div>
+                        <div class="stat-number" data-target="1.4">0</div>
+                        <div class="stat-label">Average trial cost (billion $)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-title">INEFFICIENT</div>
+                        <div class="stat-number" data-target="92">0</div>
+                        <div class="stat-label">Failure rate (%)</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Solution Section -->
         <section id="solution">
             <div class="section-content">
-                <h2>Our Solution</h2>
-                <p>Medify provides a comprehensive platform that streamlines the entire clinical trial lifecycle, from patient recruitment to data analysis and regulatory reporting.</p>
-                <p>Our innovative approach leverages cutting-edge technology to create a seamless experience for researchers, healthcare providers, and patients.</p>
-                <p>We bridge the gap between traditional clinical research and modern digital solutions, making trials more accessible and efficient.</p>
+                <h2>Medify Connects Everyone</h2>
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <h3>PATIENTS</h3>
+                        <p>Empowering patients with simple, engaging clinical trial participation</p>
+                        <ul class="benefits-list">
+                            <li>Simple enrollment with one-time codes</li>
+                            <li>Gamified task completion system</li>
+                            <li>Reward system with streaks and achievements</li>
+                            <li>Track your progress and health data</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>DOCTORS</h3>
+                        <p>Streamlined trial management for healthcare providers</p>
+                        <ul class="benefits-list">
+                            <li>Instant patient enrollment process</li>
+                            <li>Full visibility dashboard for all trials</li>
+                            <li>Cross-system integration capabilities</li>
+                            <li>Real-time patient monitoring tools</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>MONITORS</h3>
+                        <p>Advanced oversight and analytics for trial monitoring</p>
+                        <ul class="benefits-list">
+                            <li>Real-time tracking and reporting</li>
+                            <li>Predictive alerts for potential issues</li>
+                            <li>AI-powered insights and analytics</li>
+                            <li>Compliance and regulatory tools</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -812,9 +965,44 @@
         <section id="team">
             <div class="section-content">
                 <h2>Our Team</h2>
-                <p>Medify was founded by a team of healthcare professionals, technologists, and researchers passionate about transforming clinical trial management.</p>
-                <p>Our diverse team brings together decades of combined experience in medical research, software development, and healthcare innovation.</p>
-                <p>We're united by a common mission: to accelerate medical breakthroughs by making clinical trials more efficient and accessible for everyone.</p>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-photo">H</div>
+                        <div class="team-name">Helena</div>
+                        <div class="team-role">BD & Marketing</div>
+                        <div class="team-experience">Entrepreneurship Experience</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">NG</div>
+                        <div class="team-name">Nikola G</div>
+                        <div class="team-role">Life Science Engineer</div>
+                        <div class="team-experience">Pharma R&D Experience</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">A</div>
+                        <div class="team-name">Alexander</div>
+                        <div class="team-role">Pharma Product Manager</div>
+                        <div class="team-experience">23+ Years Experience</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">D</div>
+                        <div class="team-name">Denislav</div>
+                        <div class="team-role">Web Developer</div>
+                        <div class="team-experience">5+ Years Experience</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">E</div>
+                        <div class="team-name">Emil</div>
+                        <div class="team-role">IT & Marketing</div>
+                        <div class="team-experience">Startup Experience</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">NE</div>
+                        <div class="team-name">Nikola E</div>
+                        <div class="team-role">Software Engineer</div>
+                        <div class="team-experience">Banking Experience</div>
+                    </div>
+                </div>
             </div>
         </section>
 
