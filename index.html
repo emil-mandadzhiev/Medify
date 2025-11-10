@@ -170,8 +170,155 @@
 
         /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            background: linear-gradient(135deg, #0f2947 0%, #1e4976 50%, #2563eb 100%);
             color: #fff;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(96, 165, 250, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 60% 20%, rgba(147, 197, 253, 0.2) 0%, transparent 50%);
+            animation: dnaFlow 20s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(96, 165, 250, 0.1) 50%, transparent 70%);
+            background-size: 200% 200%;
+            animation: liquidFlow 15s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes dnaFlow {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(10%, 10%) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 20%) rotate(180deg);
+            }
+            75% {
+                transform: translate(-10%, 10%) rotate(270deg);
+            }
+        }
+
+        @keyframes liquidFlow {
+            0%, 100% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-brand {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 2px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .hero-tagline {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #e0f2fe;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         #hero h1 {
@@ -513,6 +660,29 @@
                 font-size: 2.5rem;
             }
 
+            .hero-brand {
+                font-size: 2.5rem;
+                letter-spacing: 0.05em;
+            }
+
+            .hero-tagline {
+                font-size: 1.25rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
             .stat-number {
                 font-size: 2.5rem;
             }
@@ -561,10 +731,14 @@
     <main>
         <!-- Hero Section -->
         <section id="hero">
-            <div class="section-content">
-                <h1>Welcome to Medify</h1>
-                <p>Revolutionizing clinical trial management with innovative technology solutions for healthcare research.</p>
-                <p>We're transforming the way medical research is conducted, making clinical trials more efficient, accessible, and patient-centered.</p>
+            <div class="section-content hero-content">
+                <h1 class="hero-brand">MEDIFY</h1>
+                <p class="hero-tagline">The Missing Link in Clinical Trials</p>
+                <p class="hero-subtitle">Transforming clinical trials through patient engagement and AI-powered insights</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Book a Demo</a>
+                    <a href="#solution" class="btn btn-secondary">Learn More</a>
+                </div>
             </div>
         </section>
 
